@@ -1,0 +1,385 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecast App</title>
+  <!-- Bootstrap CSS -->
+</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #d6e2ee;
+    }
+    #background-image {
+    
+  }
+
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      font-size: 24px;
+      color: #151212;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    .container {
+      display: block;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .main-title {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #241010;
+    }
+
+    .sub-title {
+      font-size: 18px;
+      color: #474747;
+      margin-bottom: 30px;
+    }
+
+    .btn-forecast {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #bb00ff6f;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-forecast:hover {
+      background-color: #b39e00;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+    }
+
+    .card-header {
+      background-color: #ddedfde0;
+      border-bottom: none;
+      font-size: 24px;
+      font-weight: bold;
+      color: #2d2c2c;
+    }
+
+    .card-body {
+      padding: 50px;
+
+    }
+
+    .weather-details__time {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .weather-details__temperature,
+    .weather-details__weather {
+      font-size: 16px;
+      color: #595757;
+      margin-bottom: 8px;
+    }
+
+    .hourly-data {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .hourly-time {
+      font-size: 16px;
+      color: #333;
+    }
+
+    .hourly-temperature,
+    .hourly-weather-description {
+      font-size: 14px;
+      color: #666;
+    }
+    .input-group {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .form-control {
+    border-radius: 25px 0 0 25px;
+    border: none;
+    font-size: 16px;
+    width: auto;
+  }
+
+  .btn-forecast {
+    border-radius: 0 25px 25px 0;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-forecast:hover {
+    background-color: #0056b3;
+  }
+  .card-with-background {
+  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card-body {
+  padding: 20px;
+}
+yle>
+        /* Style the container */
+        .container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        /* Style the form */
+        form {
+            background-color:light blue;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style the input field */
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Style the submit button */
+        button[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+ h2 {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            font-weight:bold;
+        }
+
+        /* Style the date and time */
+        h3 {
+            font-size: 18px;
+            color: #555;
+            font-weight:bold;
+        }
+
+        /* Style the weather information paragraphs */
+        p {
+            font-size: 16px;
+            color: #777;
+            margin: 5px 0;
+            font-weight:bold;
+        }
+
+        /* Style specific elements */
+        p:nth-child(3) {
+            font-size: 18px;
+            color: #222;
+            font-weight:bold;
+        }
+
+
+
+  </style>
+
+
+  <!-- Bootstrap Navbar -->
+  <nav class="navbar">
+    <div class="container-1">
+      <a class="navbar-brand" href=''>Weather App</a>
+    </div>
+  </nav>
+<!--<video id="background-video" autoplay loop muted>
+    <source src="/static/img/clouds.mp4"> Your browser does not support the video tag.</video> -->
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 text-center">
+       <h1 class="main-title">WEATHER FORECAST</h1>
+        <p class="sub-title1">Plan your day with accurate weather forecasts</p>
+        <div class="container">
+          <form method="post" action="">
+            {% csrf_token %}
+            <input type="text" name="location" placeholder="Enter a location..." required />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+
+
+        <!-- Card section -->
+        <div class="modal fade" id="weatherModal" tabindex="-1" aria-labelledby="weatherModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="weatherModalLabel">Weather Forecast</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div
+
+              >
+              <div class="modal-body">
+                <!-- Weather forecast details will go here -->
+                <h6 class="modal-title">City Name: <span id="modalCityName"></span></h6>
+                <p class="modal-text">Weather: <span id="modalWeather"></span></p>
+                <p class="modal-text">Temperature: <span id="modalTemperature"></span> °C</p>
+                <!-- Add more weather details as needed -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card section -->
+        <div class="row card-deck mt-4">
+          <!-- Mumbai Card -->
+          <div class="col-md-3">
+            <div class="card card-with-background" style="background-image: url('https://www.nationsonline.org/gallery/India/Gateway-of-India.jpg');">
+              <div class="card-body" >
+                <a style="text-decoration: none;font-size: 16px;color: white;font-weight: bold;"class="card-title" href="/mumbai">MUMBAI</a>
+
+              </div>
+            </div>
+          </div>
+          <!-- Delhi Card -->
+          <div class="col-md-3">
+            <div class="card card-with-background" style="background-image: url('https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/c5/e8/5c.jpg');">
+              <div class="card-body">
+                <a style="text-decoration: none;font-size: 16px;color: white;font-weight: bold;"class="card-title" href="/delhi">DELHI</a>
+              </div>
+            </div>
+          </div>
+          <!-- Bangalore Card -->
+          <div class="col-md-3">
+            <div class="card card-with-background" style="background-image: url('https://www.nishantratnakar.com/wp-content/uploads/2013/06/0d3cf524db1e11e284fa22000a1f9c87_7.jpg');">
+              <div class="card-body">
+                <a style="text-decoration: none;font-size: 16px;color: black;font-weight: bold;"class="card-title" href="/bangalore">BANGALORE</a>
+
+              </div>
+            </div>
+          </div>
+          <!-- Kolkata Card -->
+          <div class="col-md-3">
+            <div class="card card-with-background" style="background-image: url('https://img.staticmb.com/mbcontent/images/uploads/2022/6/Howrah-bridge.jpg');">
+              <div class="card-body" >
+                <a style="text-decoration: none;font-size: 16px;color: black;font-weight: bold;"class="card-title" href="/kolkata">KOLKATA</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+      </div>
+    </div>
+      <div class="row mt-4">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        Current Weather for {{ location }}
+      </div>
+      <div class="card-body">
+        <div class="current-weather">
+          {% if current_temp and current_weather_desc %}
+            <h3>Current Weather Data: </h3>
+            <p>Temperature: {{ current_temp|floatformat:2 }}°C</p>
+            <p>Weather: {{ current_weather_desc }}</p>
+            <p>Humidity: {{ current_humidity }}%</p>
+            <p>Wind Speed: {{ current_wind_speed }} kmph</p>
+          {% else %}
+            <p>No current weather data available.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+      <!-- 5-Day Weather Forecast -->
+      <div class="card">
+        <div class="card-header">
+          5-Day Weather Forecast for {{ location }}
+        </div>
+        <div class="card-body">
+          <div class="forecast-container">
+            {% if forecasts %}
+              {% for forecast in forecasts %}
+                <div class="hourly-data">
+                  <div class="hourly-time">
+                    <h3>{{ forecast.date_time|date:"D, d M Y, H:i:s" }}</h3>
+                  </div>
+                  <div class="hourly-temperature">
+                    <p>Temperature: {{ forecast.temperature|floatformat:2 }}°C</p>
+                  </div>
+                  <div class="hourly-weather-description">
+                    <p>Weather: {{ forecast.weather_desc }}</p>
+                  </div>
+                  <div class="hourly-humidity">
+                    <p>Humidity: {{ forecast.humidity }}%</p>
+                  </div>
+                  <div class="hourly-wind-speed">
+                    <p>Wind Speed: {{ forecast.wind_speed }} kmph</p>
+                  </div>
+                </div>
+              {% endfor %}
+            {% else %}
+              <p>No forecast data available.</p>
+            {% endif %}
+          </div>
+        </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+  <!-- Your custom JavaScript -->
+  <script>
+    function showWeather(city, weather, temperature) {
+      document.getElementById("modalCityName").textContent = city;
+      document.getElementById("modalWeather").textContent = weather;
+      document.getElementById("modalTemperature").textContent = temperature;
+    }
+  </script>
+</body1>
+</html>

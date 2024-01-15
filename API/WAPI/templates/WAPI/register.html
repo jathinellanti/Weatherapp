@@ -1,0 +1,39 @@
+{% extends "WAPI/home.html" %}
+{% block title %}
+  Register
+{% endblock title %}
+
+{% block content %}
+
+  <div class="container">
+    <h2>Register</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="First name">First name</label>
+            <input type="text" name="First name">
+        </div>
+          <div class="form-group">
+            <label for="Last name">Last name</label>
+            <input type="text" name="Last name">
+        </div>
+         <div class="form-group">
+            <label for="Email id">Email id</label>
+            <input type="Email id" name="Email id">
+        </div>
+          <div class="form-group">
+            <label for="Mobile no">Mobile no</label>
+            <input type="Mobile no" name="Mobile no">
+        </div>
+        <div class="form-group">
+            <label for="password">password</label>
+            <input type="password" name="password">
+        </div>
+        <div class="form-group">
+            <label for="cpassword">confirm  Password</label>
+            <input type="password" name="cpassword">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+{% endblock content %}

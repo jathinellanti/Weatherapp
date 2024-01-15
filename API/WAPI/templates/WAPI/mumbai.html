@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Weather</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    {% if error_message %}
+        <div class="alert alert-danger">
+            {{ error_message }}
+        </div>
+    {% endif %}
+    <div class="card mb-4">
+        <div class="card-body">
+            {% if current_temp and current_weather_desc %}
+                <h2 class="card-title">Current Weather Data</h2>
+                <h3>{{ date_time|date:"D, d M Y H:i:s" }}</h3>
+                <p class="card-text">Temperature: {{ current_temp|floatformat:2 }}°C</p>
+                <p class="card-text">Weather: {{ current_weather_desc }}</p>
+                <p class="card-text">Humidity: {{ current_humidity }}%</p>
+                <p class="card-text">Wind Speed: {{ current_wind_speed }} kmph</p>
+            {% else %}
+                <p class="card-text">No current weather data available.</p>
+            {% endif %}
+        </div>
+    </div>
+    {% if forecasts %}
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">5-Day Weather Forecast for {{ location }}</h2>
+                <ul class="list-group list-group-flush">
+                    {% for forecast in forecasts %}
+                        <li class="list-group-item">
+                            <h3>{{ forecast.date_time|date:"D, d M Y H:i:s" }}</h3>
+                            <p class="card-text">Temperature: {{ forecast.temperature|floatformat:2 }}°C</p>
+                            <p class="card-text">Weather Description: {{ forecast.weather_desc }}</p>
+                            <p class="card-text">Humidity: {{ forecast.humidity }}%</p>
+                            <p class="card-text">Wind Speed: {{ forecast.wind_speed }} kmph</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+</div>
+<!-- Add Bootstrap JS and jQuery scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

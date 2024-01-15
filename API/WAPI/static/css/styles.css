@@ -1,0 +1,118 @@
+/* Style for the main title */
+.main-title {
+  font-size: 36px;
+  margin-top: 30px;
+}
+
+/* Style for the sub-title */
+.sub-title {
+  font-size: 18px;
+  color: #888;
+}
+
+/* Style for the background video */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+/* Style for the search input and button */
+.form-control-lg {
+  font-size: 18px;
+  border-radius: 0;
+}
+
+.btn-forecast {
+  font-size: 18px;
+  border-radius: 0;
+  background-color: #007bff;
+  border: none;
+}
+
+/* Style for the weather cards */
+.card-with-background {
+  border: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 300px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.card-title {
+  font-size: 24px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 18px;
+  color: #fff;
+}
+
+/* Style for the modal */
+.modal-content {
+  background-color: #f8f9fa;
+}
+
+.modal-title {
+  font-size: 24px;
+}
+
+.modal-text {
+  font-size: 18px;
+}
+
+/* Style for the buttons */
+.btn-group button {
+  font-size: 18px;
+  border-radius: 0;
+}
+
+/* Style for the weather details card */
+.weather-details {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.weather-details__time {
+  font-weight: bold;
+}
+
+.weather-details__temperature,
+.weather-details__weather {
+  margin-top: 10px;
+}
+
+/* Style for the hourly weather card */
+.hourly-weather {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.hourly-data {
+  margin-top: 10px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.hourly-time,
+.hourly-temperature,
+.hourly-weather-description {
+  font-weight: bold;
+}
+
+/* Style for the footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+}
